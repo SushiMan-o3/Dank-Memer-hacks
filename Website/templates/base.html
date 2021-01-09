@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+
+		<title>{% block title %}{% endblock %}</title>
+
+		<!--<meta name="color-scheme" content="light dark"> -->
+
+		<link href="static/style.css" rel="stylesheet" type="text/css" />
+		<link rel="icon" href="/static/logo.png">
+
+		<!-- The discord button-->
+		<style>
+			.discord {
+				position: fixed;
+				margin-left: 91vw;
+				margin-top: 92vh;
+				transition-duration: 0.4s;
+				border: 2px  transparent;
+				padding: 17px 30px;
+				background: #00FA9A;
+				font-size: 20px;
+				color: black;
+			}
+
+				.discord:hover {
+					color: white;
+					border: 6px solid #00FA9A;
+					background: black;
+					padding: 17px 30px;
+				}
+
+			/* Dark Mode*/
+			body {
+			}
+
+			.btn-toggle {
+				transition-duration: 0.4s;
+				background: #00FA9A;
+				border: transparent;
+				padding: 10px 15px;
+				font-family: "Quicksand", sans-serif;
+				font-size: 17px;
+				color: black;
+			}
+
+				.btn-toggle:hover {
+					color: black;
+					border: solid black;
+					background: white;
+				}
+			
+		</style>
+
+	</head>
+	<body>
+		<!-- The discord button-->
+		<button class="discord" onclick="window.open('https://discord.com/invite/WzfjpcDX')">Discord</button>
+	</body>
+
+	<!-- Dark Mode 
+	<div class = 'theme-system'>
+		<meta name="color-scheme" content="dark light">
+	</div>
+	-->
+
+	<!-- Nav Bar-->
+	<body>
+		<nav class="nav">
+				<div class="container">
+					<div class="logo">
+						<a href="#">Dank Memer Hacks</a>
+					</div>
+					<div id="mainListDiv" class="main_list">
+						<ul class="navlinks">
+							<li><a href="http://127.0.0.1:5000/">Home</a></li>
+							<li><a href="information">Information</a></li>
+							<li><a href="help">Help</a></li>
+							<!--<<li><input type = "button" value="Dark Mode" class="btn-toggle"></li>-->
+						</ul>
+					</div>
+					<span class="navTrigger">
+						<i></i>
+						<i></i>
+						<i></i>
+					</span>
+				</div>
+			</nav>
+			
+				{% block content %}
+				{% endblock %}
+
+		<!-- Jquery needed -->
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+			<script src="js/scripts.js"></script>
+
+		<!-- Function used to shrink nav bar removing paddings and adding black background -->
+			<script>
+				$(window).scroll(function() {
+					if ($(document).scrollTop() > 50) {
+						$('.nav').addClass('affix');
+						console.log("OK");
+					} else {
+						$('.nav').removeClass('affix');
+					}
+				});
+
+				// Select the button
+				//const btn = document.querySelector('.btn-toggle');
+
+				// Listen for a click on the button
+				//btn.addEventListener('click', function() {
+					// Then toggle (add/remove) the .dark-theme class to the body
+					//document.body.classList.toggle('theme-system');  
+				//})
+
+			</script>
+
+
+		<script src="dist/smooth-scrollbar.js"></script>
+
+		<script>
+		import Scrollbar from 'smooth-scrollbar';
+
+	Scrollbar.init(document.querySelector('#my-scrollbar'));
+
+		var Scrollbar = window.Scrollbar;
+
+		Scrollbar.init(document.querySelector('#my-scrollbar'));
+		</script>
+
+ 	</body>
+</html>

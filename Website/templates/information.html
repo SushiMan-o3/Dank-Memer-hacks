@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% block title %}Information{% endblock %}
+{% block content %}
+    <section class="home">
+    </section>
+
+    <div class = "information">
+        <h2 class="myH2">What is this?</h2>
+            <p class="myP">
+                Description
+            </p>
+        <h2 class="myH2">Our Goal</h2>
+            <p class="myP">
+                Yesterday<br />Today<br />Tomorrow<br />1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />22<br />23<br />24<br />25<br />26<br />27<br />28<br />29<br />30<br />31<br />32<br />33<br />34<br />35<br />36<br />37<br />38<br />39<br />40<br />41<br />42<br />43<br />44<br />45<br />46<br />47<br />48<br />49<br />
+            </p>
+    </div>
+
+    <style>
+        .home {
+            width: 100%;
+            height: 10vh;
+            background-color: black;
+            background-position: center top;
+            background-size:cover;
+        }
+
+        .navTrigger {
+            display: none;
+        }
+
+        .nav {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            -webkit-transition: all 0.4s ease;
+            transition: all 0.4s ease;
+        }
+
+    </style>
+
+    <section class = "Selling">
+        <h2 class="myH2">Packages</h2>
+        <div class = "Packages">
+            <div class = "Basic">
+                <h4>Dank Memer Only</h4>
+            </div>
+            <div class = "Extra">
+                <h4>Dank Memer + Extra</h4>
+                    <p>Includes: Dank Memer tool and Other fun and Useful tools</p>
+            </div>
+            <div class = "Additonal">
+                <h4>Additonal</h4>
+                    <p>Includes: One of the Packs + Custom Commands</p>
+                    <p class = "center">1 Dollar for 1 Command</p>
+            </div>
+        </div>
+
+        <br><br><br><br>
+    </section>
+
+    <style>
+        h4 {
+            font-size: 20px;
+            text-align:center;
+        }
+
+        p {
+            font-size: 15px;
+            padding-left:15%;
+	        padding-right:15%;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .Packages {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: minmax(100px, auto);
+            grid-gap: 20px 50px;
+            padding-left:15%;
+	        padding-right:15%;
+
+            
+        }
+
+
+        .Packages > * {
+            color: black;
+            background-color: #E7E7E7;
+            /* colors: E7E7E7, 4d4d4d*/
+            border-radius: 25px;
+        }
+
+        /*
+
+        
+        .Packages > * {
+            background-color: #4d4d4d;
+            color: white;
+            border-radius: 25px;
+        }
+        .Packages.theme-system > * {
+            background-color: #4d4d4d;
+            color: white;
+        }*/
+    </style>
+ 
+{% endblock %}
