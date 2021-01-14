@@ -1,4 +1,4 @@
-Bot Version = 1.4
+Bot Version = 1.5
 
 IMPORTANT
 Recommended - Create and alt, get it's user id

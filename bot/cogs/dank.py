@@ -5,7 +5,8 @@ from discord.ext import commands
 
 def colour():
     colours = [0x921cff, 0x00ff7f, 0xff9b38, 0xff0000, 0x0900ff]
-    return random.choice(colours)  
+    return random.choice(colours)
+
 
 class dank(commands.Cog, name='dank'):
     def __init__(self, bot):
@@ -19,19 +20,21 @@ class dank(commands.Cog, name='dank'):
 
     @commands.group(invoke_without_command=True, aliases = ['start'])
     async def donk(self, ctx):
-        await ctx.send('Please send me something that you want me to start.')
+        await ctx.send('\>>> Please send me something that you want me to start.')
 
     @donk.command()
     async def all(self, ctx):
+        from config import prefix
         ok = {'beg': 785998769728389181, 'fish': 785998867556466728, 'search': 785998935642472539 , 'pm': 785998791668924496, 'hunt': 787721063504019466}
         for i in ok.keys():
             x = self.bot.get_channel(ok[i])
-            await x.send(f'╞donk {i}')
+            await x.send(f'{prefix}donk {i}')
 
     @donk.command()
     async def fish(self, ctx):
+        await ctx.send('\>>> Running Fish Command.')
         from config import logs, user_id
-        await ctx.send('pls fish')
+        logs = self.bot.get_channel(logs)
         while True:
             try:
                 x = (await self.bot.wait_for('message', timeout=60.0, check=lambda message: message.author.id == user_id and message.channel == ctx.channel)).content.lower()
@@ -40,36 +43,34 @@ class dank(commands.Cog, name='dank'):
                     await ctx.send(embed = embed)
                     break
             except asyncio.TimeoutError:
-                await ctx.send('pls fish')
-                try:
-                    value = (await self.bot.wait_for('message', timeout = 60.0, check = lambda message: message.author.id == 270904126974590976 and message.channel == ctx.channel)).content
-                    if value == "You don't have a fishing pole, you need to go buy one. You're not good enough to catch them with your hands.":
-                        await ctx.send('pls buy fishingpole')
-                        bruh = (await self.bot.wait_for('message', timeout = 5.0, check = lambda message: message.author.id == 270904126974590976 and message.channel == ctx.channel)).content
-                        if bruh.find("Far out, you don't have enough money in your wallet or your bank to buy that much!!"):
-                            embed = discord.Embed(description = 'Fishing rod lost.', color=0xbb0000)
-                            await logs.send('@everyone')
-                            await logs.send(embed = embed)
-                            break
-                    else:
-                        if value.find("lol you suck, you found nothing") or value.find("You cast out your line and brought back"):
-                            pass
+                    await ctx.send('pls fish')
+                    value = (await self.bot.wait_for('message', check = lambda message: message.author.id == 270904126974590976 and message.channel == ctx.channel)).content
+                    try:
+                        if "Type" in value:
+                            words = (value.split('`'))
+                            async with ctx.channel.typing():
+                                await asyncio.sleep(float(f"{random.randint(3, 7)}.{random.randint(0, 9)}"))
+                                word = words[1].replace(u'\U0000feff', '')
+                                await ctx.send(words[1])
                         else:
-                            if 'type' in value:
-                                words = value.split('type')
-                                words = words[2].replace('`', '')
-                                async with ctx.typing():
-                                    await asyncio.sleep(5)
-                                await ctx.send(words)
-                            else:
-                                await ctx.send('type not found')
-                except:
-                    ...
+                            raise Exception("Fuck off dank memer")
+                    except:
+                        if 'lol you suck, you found nothing' in value or "You cast out your line and brought back" in value:
+                            await ctx.send('Okay.')
+                        else:
+                            if "You don't have a fishing pole, you need to go buy one. You're not good enough to catch them with your hands." in value:
+                                await ctx.send('pls buy fishingpole')
+                                bruh = (await self.bot.wait_for('message', timeout = 5.0, check = lambda message: message.author.id == 270904126974590976 and message.channel == ctx.channel)).content
+                                if "Far out, you don't have enough money in your wallet or your bank to buy that much!!" in bruh:
+                                    await ctx.send("\>>> Not enough for a fishing pole.")
+                                    await logs.send('\>>> Not enough for a fishing pole')
+                                    break
     
     @donk.command()
     async def hunt(self, ctx):
+        await ctx.send('\>>> Running Hunt Command.')
         from config import logs, user_id
-        await ctx.send('pls hunt')
+        logs = self.bot.get_channel(logs)
         while True:
             try:
                 x = (await self.bot.wait_for('message', timeout=60.0, check=lambda message: message.author.id == user_id and message.channel == ctx.channel)).content.lower()
@@ -78,38 +79,34 @@ class dank(commands.Cog, name='dank'):
                     await ctx.send(embed = embed)
                     break
             except asyncio.TimeoutError:
-                await ctx.send('pls hunt')
-                try:
-                    value = (await self.bot.wait_for('message', timeout = 60.0, check = lambda message: message.author.id == 270904126974590976 and message.channel == ctx.channel)).content
-                    if value.find("You don't have a hunting rifle, you need to go buy one. You're not good enough to shoot animals with your bare hands."):
-                        await ctx.send('pls buy rifle')
-                        bruh = (await self.bot.wait_for('message', timeout = 5.0, check = lambda message: message.author.id == 270904126974590976 and message.channel == ctx.channel)).content
-                        if bruh.find("Far out, you don't have enough money in your wallet or your bank to buy that much!!"):
-                            embed = discord.Embed(description = 'Rifle lost.', color=0xbb0000)
-                            logs = self.bot.get_channel(logs)
-                            await logs.send(embed = embed)
-                            break
+                    await ctx.send('pls hunt')
+                    value = (await self.bot.wait_for('message', check = lambda message: message.author.id == 270904126974590976 and message.channel == ctx.channel)).content
+                    try:
+                        if "Type" in value:
+                            words = (value.split('`'))
+                            async with ctx.channel.typing():
+                                await asyncio.sleep(float(f"{random.randint(3, 7)}.{random.randint(0, 9)}"))
+                                word = words[1].replace(u'\U0000feff', '')
+                                await ctx.send(word)
+
                         else:
-                            ...
-                    else:
-                        if value.find("lmao you are terrible, you found nothing to hunt") or value.find("You went hunting in the woods and brought back a"):
-                            pass
+                            raise Exception("Fuck off dank memer")
+                    except:
+                        if 'lmao you are terrible, you found nothing to hunt' in value or "You went hunting in the woods and brought back a" in value:
+                            await ctx.send('Okay.')
                         else:
-                            if 'type' in value:
-                                words = value.split('type')
-                                words = words[2].replace('`', '')
-                                async with ctx.typing():
-                                    await asyncio.sleep(5)
-                                await ctx.send(words)
-                            else:
-                                await ctx.send('type not found')
-                except:
-                    ...
+                            if "You don't have a hunting rifle, you need to go buy one. You're not good enough to shoot animals with your bare hands." in value:
+                                await ctx.send('pls buy rifle')
+                                bruh = (await self.bot.wait_for('message', timeout = 5.0, check = lambda message: message.author.id == 270904126974590976 and message.channel == ctx.channel)).content
+                                if "Far out, you don't have enough money in your wallet or your bank to buy that much!!" in bruh:
+                                    await ctx.send("\>>> Not enough for a rifle.")
+                                    await logs.send('\>>> Not enough for a rifle.')
+                                    break
 
     @donk.command()
     async def beg(self, ctx):
         from config import user_id
-        await ctx.send('pls beg')
+        await ctx.send('\>>> Running Beg Command.')
         while True:
             try:
                 x = (await self.bot.wait_for('message', timeout=46.0, check=lambda message: message.author.id == user_id and message.channel == ctx.channel)).content.lower()
@@ -123,6 +120,7 @@ class dank(commands.Cog, name='dank'):
     @donk.command()
     async def search(self, ctx):
         from config import user_id
+        await ctx.send('\>>> Running Search Command.')
         while True:
             try:
                 x = (await self.bot.wait_for('message', timeout=30.0, check=lambda message: message.author.id == user_id and message.channel == ctx.channel)).content.lower()
@@ -143,6 +141,7 @@ class dank(commands.Cog, name='dank'):
     @donk.command(aliases = ['postmeme'])
     async def pm(self, ctx):
         from config import user_id
+        await ctx.send('\>>> Running Postmeme Command.')
         while True:
             try:
                 x = await self.bot.wait_for('message', timeout=60.0, check=lambda message: message.author.id == user_id and message.channel == ctx.channel)
@@ -152,13 +151,14 @@ class dank(commands.Cog, name='dank'):
                     break
             except asyncio.TimeoutError:
                 await ctx.send('pls pm')
-                opt = list('frick')
-                await asyncio.sleep(3)
-                await ctx.send(random.choice(opt))
+                word = (await self.bot.wait_for('message', check = lambda message: message.author.id == 270904126974590976 and message.channel == ctx.channel)).content
+                if "oi you need to buy a laptop in the shop to post memes" in word:
+                    break
+                else:
+                    opt = list('frick')
+                    await asyncio.sleep(3)
+                    await ctx.send(random.choice(opt))
 
-    @donk.group(invoke_without_command=True)
-    async def reactions(self, ctx):
-        await ctx.send('Please send me something that you want me to start.')
-    
+
 def setup(bot):
     bot.add_cog(dank(bot))

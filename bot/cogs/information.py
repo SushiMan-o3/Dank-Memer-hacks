@@ -79,3 +79,5 @@ class important(commands.Cog, name='Important'):
 
 def setup(bot):
     bot.add_cog(important(bot))
+
+    

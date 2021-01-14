@@ -4,7 +4,6 @@ from discord.ext import commands
 import math
 import datetime
 import json
-import praw
 import asyncio
 now = datetime.datetime.now()
 
@@ -46,7 +45,7 @@ class other(commands.Cog, name='other'):
                 embed=discord.Embed(title='Square Roots', description=f"√{question} = {answer}", color=colour())
                 await ctx.send(embed=embed)
             except:
-                await ctx.send("Something went wrong!")
+                await ctx.send("\>>> Something went wrong!")
     
     @commands.command(description = "Shows you're away")
     async def afk(self, ctx):
@@ -57,8 +56,8 @@ class other(commands.Cog, name='other'):
             await self.bot.wait_for('message', check=lambda message: message.author == ctx.author)
             await ctx.author.edit(nick=nickname)
             await ctx.channel.send(f'{ctx.author.mention} has been removed from AFK.')
-        except commands.BotMissingPermissions:
-            embed=discord.Embed(description="The bot needs to have a higher role for you to go into AFK.", color=colour())
+        except:
+            embed=discord.Embed(description="\>>> You don't have the permission to change your nickname.", color=colour())
             await ctx.send(embed=embed)
     
     """
@@ -72,12 +71,12 @@ class other(commands.Cog, name='other'):
             tags = json.load(f)
         if tag is None:
             await ctx.message.delete(delay=10.0)
-            message = await ctx.send('\> You need to pass a tag.')
+            message = await ctx.send('\>>> You need to pass a tag.')
             return await message.delete(delay=10.0)
         else:
             if tag not in tags.keys():
                 await ctx.message.delete(delay=10.0)
-                message = await ctx.send('\> Could not find a tag with that name.')
+                message = await ctx.send('\>>> Could not find a tag with that name.')
                 return await message.delete(delay=10.0)
             else:
                 await ctx.send(tags[tag])
@@ -85,51 +84,51 @@ class other(commands.Cog, name='other'):
     @tag.command()
     async def create(self, ctx, * , name: str = None):
         if name is None:
-            await ctx.send("\> The title of the tag you're trying to create is missing.")
+            await ctx.send("\>>> The title of the tag you're trying to create is missing.")
         else:
             with open('cogs/tags.json') as f:
                 tags = json.load(f)
             if name.lower() in tags.keys():
-                await ctx.send("\> There's a tag with that name!")
+                await ctx.send("\>>> There's a tag with that name!")
             else:
-                await ctx.send("\> Send the description of the tag.")
+                await ctx.send("\>>> Send the description of the tag.")
                 await asyncio.sleep(1)
                 description = await self.bot.wait_for('message', check=lambda message: message.author == ctx.author)
                 tags[name.lower()] = description.content
                 with open('cogs/tags.json', 'w') as f:
                     json.dump(tags, f, indent = 4)
-                await ctx.send(f"\> Done! Your tag has been created.")
+                await ctx.send(f"\>>> Done! Your tag has been created.")
 
     @tag.command()
     async def edit(self, ctx, *, tag: str = None):
         if tag is None:
-            await ctx.send('\> Please specify the tag you want to edit.')
+            await ctx.send('\>>> Please specify the tag you want to edit.')
         else:
             with open('cogs/tags.json') as f:
                 tags = json.load(f)
             if tag.lower() not in tags.keys():
-                await ctx.send("\> The tag you're trying to edit isn't found.")
+                await ctx.send("\>>> The tag you're trying to edit isn't found.")
             else:
-                await ctx.send('\> What is the new description of this tag?')
+                await ctx.send('\>>> What is the new description of this tag?')
                 description = await self.bot.wait_for('message', check=lambda message: message.author == ctx.author)
                 tags[tag.lower()] = description.content
                 with open('cogs/tags.json', 'w') as f:
                     json.dump(tags, f, indent = 4)
-                await ctx.send("\> Tag edited! Your tag has been edited.")
+                await ctx.send("\>>> Tag edited! Your tag has been edited.")
     
     @tag.command()
     async def delete(self, ctx, *, tag: str = None):
         if tag is None:
-            await ctx.send('\> Please specify the tag you want to delete.')
+            await ctx.send('\>>> Please specify the tag you want to delete.')
         else:
             with open('cogs/tags.json') as f:
                 tags = json.load(f)
             tag = tag.lower()
             if tag not in tags:
-                await ctx.send("\> The tag that you're trying to delete wasn't found")
+                await ctx.send("\>>> The tag that you're trying to delete wasn't found")
             else:
                 tags.pop(tag)
-                await ctx.send("\> Tag deleted! Your tag has been deleted.")
+                await ctx.send("\>>> Tag deleted! Your tag has been deleted.")
                 with open('cogs/tags.json', 'w') as f:
                     json.dump(tags, f, indent = 4)
 
@@ -137,34 +136,11 @@ class other(commands.Cog, name='other'):
     """
     fun
     """
-    '''
-    @commands.command(aliases = ['reddit', 'breddit'])
-    async def browsereddit(self, ctx, *, arg = None):
-        if arg is None:
-            await ctx.send('Please specify a subreddit that you want to search!')
-        else:
-            try:
-                request = reddit.subreddit(arg)
-                one = request.hot(limit=100)
-                red_submiss = random.choice(list(one))
-                name = red_submiss.title
-                link = f"https://reddit.com/{red_submiss.permalink}"
-                embed = discord.Embed(
-                    title = name,
-                    url = link,
-                    description = red_submiss.selftext,
-                    color = 0xFF5700)
-                embed.set_image(url = str(red_submiss.url))
-                await ctx.send(embed = embed)
-            except:
-                embed = discord.Embed(description='Subreddit not found!', color=0xFF5700)
-                await ctx.send(embed=embed)
-                '''
         
     @commands.command()
     async def emoji(self, ctx, *, text: str = None):
         if text is None:
-            await ctx.send("Please add the text you want me to convert to emojis.")
+            await ctx.send("\>>> Please add the text you want me to convert to emojis.")
         else:
             text = text.lower()
             emojis = {'a':'🇦 ', 'b': '🇧 ', 'c': '🇨 ', 'd': '🇩 ', 'e': '🇪 ', 'f': '🇫 ', 'g': '🇬 ', 'h': '🇭 ', 'i': '🇮 ', 'j': '🇯 ', 'k': '🇰 ', 'l': '🇱 ', 'm': '🇲 ', 'n': '🇳 ', 'o': '🇴 ', 'p': '🇵 ', 'q': '🇶 ', 'r': '🇷 ', 's': '🇸 ', 't': '🇹 ', 'u':'🇺 ', 'v': '🇻 ', 'w': '🇼 ', 'x':'🇽 ', 'y': '🇾 ', 'z': '🇿 ', ' ': '  ', '!': '❗'}
@@ -175,7 +151,7 @@ class other(commands.Cog, name='other'):
     @commands.group(invoke_without_command=True)
     async def morse(self, ctx, *, text: str = None):
         if text is None:
-            await ctx.send("Please add the text you want me to convert to morse.")
+            await ctx.send("\>>> Please add the text you want me to convert to morse.")
         else:
             from cogs.morse import MorseCodeTranslator
             translator = MorseCodeTranslator()
@@ -184,7 +160,7 @@ class other(commands.Cog, name='other'):
     @morse.command(alias = 'en')
     async def english(self, ctx, *, text: str = None):
         if text is None:
-            await ctx.send("Please add the morse text you want me to convert to english.")
+            await ctx.send("\>>> Please add the morse text you want me to convert to english.")
         else:
             from cogs.morse import MorseCodeTranslator
             translator = MorseCodeTranslator()
