@@ -1,139 +1,28 @@
 {% extends "base.html" %}
 {% block title %}Information{% endblock %}
+
+{% block head %}
+    <link href="static/other-style.css" rel="stylesheet" type="text/css" />
+    <style> 
+
+    </style>
+{% endblock %}
+
 {% block content %}
-    <section class="home">
-    </section>
+
+<section class="home"></section>
 
     <div class = "information">
+
         <h2 class="myH2">What is this?</h2>
             <p class="myP">
                 Description
             </p>
+
         <h2 class="myH2">Our Goal</h2>
             <p class="myP">
-                Yesterday<br />Today<br />Tomorrow<br />1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />22<br />23<br />24<br />25<br />26<br />27<br />28<br />29<br />30<br />31<br />32<br />33<br />34<br />35<br />36<br />37<br />38<br />39<br />40<br />41<br />42<br />43<br />44<br />45<br />46<br />47<br />48<br />49<br />
+
             </p>
     </div>
-
-    <style>
-        .home {
-            width: 100%;
-            height: 10vh;
-            background-color: black;
-            background-position: center top;
-            background-size:cover;
-        }
-
-        .navTrigger {
-            display: none;
-        }
-
-        .nav {
-            padding-top: 20px;
-            padding-bottom: 20px;
-            -webkit-transition: all 0.4s ease;
-            transition: all 0.4s ease;
-        }
-
-    </style>
-
-    <center><a class = "download-btn" href = "files.zip" download="files.zip">bruh</a><center>
-    <style>
-        .download-btn {
-            color: black;
-            background-color: #00FA9A;
-            padding: 10px 30px;
-            border-radius: 50px;
-            font-size: 15px;
-            border: 1px transparent;
-        }
-    </style>
-
-    <section class = "Selling">
-        <h2 class="myH2">Packages</h2>
-        <div class = "Packages">
-            <div class = "Basic">
-                <h4>Dank Memer Only</h4>
-                <p>bruh
-                    <i>
-                        <svg enable-background="new 0 0 36 36" height="25" viewBox="0 0 36 36" width="25" xmlns="http://www.w3.org/2000/svg"><g id="bg"><g><path d="m34.904 20.355c-3.782-5.791-3.38-11.727-5.203-14.518s-7.256-7.603-20.093.782-9.572 17.5-7.566 20.569c9.388 14.372 39.561 3.423 32.862-6.833z" fill="#efefef"/></g></g><g id="color"><g><circle cx="18" cy="18" fill="#2fdf84" r="11.25"/></g><g><path d="m9 18c0-5.833 4.44-10.629 10.125-11.193-.37-.037-.745-.057-1.125-.057-6.213 0-11.25 5.037-11.25 11.25s5.037 11.25 11.25 11.25c.38 0 .755-.02 1.125-.057-5.685-.564-10.125-5.36-10.125-11.193z" fill="#00b871"/></g><g><path d="m28 31.5c-.827 0-1.5-.673-1.5-1.5s.673-1.5 1.5-1.5 1.5.673 1.5 1.5-.673 1.5-1.5 1.5zm0-2c-.276 0-.5.224-.5.5s.224.5.5.5.5-.224.5-.5-.224-.5-.5-.5z" fill="#a4afc1"/></g></g><g id="regular"><g><path d="m18 30c-6.617 0-12-5.383-12-12s5.383-12 12-12 12 5.383 12 12-5.383 12-12 12zm0-22.5c-5.79 0-10.5 4.71-10.5 10.5s4.71 10.5 10.5 10.5 10.5-4.71 10.5-10.5-4.71-10.5-10.5-10.5z"/></g><g><path d="m16.875 22c-.192 0-.384-.073-.53-.22l-3.25-3.25 1.061-1.061 2.72 2.72 5.97-5.97 1.061 1.061-6.5 6.5c-.148.147-.34.22-.532.22z"/></g></g></svg>                    
-                    </i>
-                    
-                </p>
-                <center><input type = "button" value="Buy Now" class="buy-button"></center>
-            </div>
-            <div class = "Extra">
-                <h4>Dank Memer + Extra</h4>
-                    <p>Includes:<br> 
-                    Dank Memer tool<br>
-                    Fish, Hunt, Postmeme, Search and beg
-                    and Other fun and Useful tools</p>
-                    <center><input type = "button" value="Buy Now" class="buy-button"></center>
-            </div>
-            <div class = "Additonal">
-                <h4>Additonal</h4>
-                    <p>Includes: 
-                    ✅One of the Packs + Custom Commands</p>
-                    <p class = "center">1 Dollar for 1 Command</p>
-                    <center><input type = "button" value="Buy Now" class="buy-button"></center>
-            </div>
-        </div>
-
-        <br><br><br><br>
-    </section>
-
-    <style>
-        h4 {
-            font-size: 20px;
-            text-align:center;
-        }
-
-        p {
-            font-size: 15px;
-            padding-left:15%;
-	        padding-right:15%;
-        }
-
-        .center {
-            text-align: center;
-        }
-
-        .Packages {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-auto-rows: minmax(100px, auto);
-            grid-gap: 20px 50px;
-            padding-left:15%;
-	        padding-right:15%;
-        }
-
-
-        .Packages > * {
-            color: black;
-            background-color: #E7E7E7;
-            /* colors: E7E7E7, 4d4d4d*/
-            border-radius: 25px;
-        }
-
-        .buy-button {
-            color: black;
-            background-color: #00FA9A;
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-size: 15px;
-            align: center;
-            border: 2px transparent;
-        }
-        /*
-        .Packages > * {
-            background-color: #4d4d4d;
-            color: white;
-            border-radius: 25px;
-        }
-        .Packages.theme-system > * {
-            background-color: #4d4d4d;
-            color: white;
-        }*/
-    </style>
- 
+</section>
 {% endblock %}

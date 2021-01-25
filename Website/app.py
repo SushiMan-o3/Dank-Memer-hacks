@@ -14,5 +14,9 @@ def about():
 def help():
     return render_template('help.html') 
 
+@app.route("/test", methods=['GET', 'POST'])
+def test():
+    return render_template('test.html') 
+
 if __name__ == "__main__":
     app.run(debug = True)

@@ -34,6 +34,7 @@ class dank(commands.Cog, name='dank'):
     async def fish(self, ctx):
         await ctx.send('\>>> Running Fish Command.')
         from config import logs, user_id
+        import string
         logs = self.bot.get_channel(logs)
         while True:
             try:
@@ -51,7 +52,7 @@ class dank(commands.Cog, name='dank'):
                             async with ctx.channel.typing():
                                 await asyncio.sleep(float(f"{random.randint(3, 7)}.{random.randint(0, 9)}"))
                                 word = words[1].replace(u'\U0000feff', '')
-                                await ctx.send(words[1])
+                                await ctx.send(word)
                         else:
                             raise Exception("Fuck off dank memer")
                     except:
@@ -70,6 +71,7 @@ class dank(commands.Cog, name='dank'):
     async def hunt(self, ctx):
         await ctx.send('\>>> Running Hunt Command.')
         from config import logs, user_id
+        import string
         logs = self.bot.get_channel(logs)
         while True:
             try:
@@ -88,7 +90,6 @@ class dank(commands.Cog, name='dank'):
                                 await asyncio.sleep(float(f"{random.randint(3, 7)}.{random.randint(0, 9)}"))
                                 word = words[1].replace(u'\U0000feff', '')
                                 await ctx.send(word)
-
                         else:
                             raise Exception("Fuck off dank memer")
                     except:
@@ -159,6 +160,19 @@ class dank(commands.Cog, name='dank'):
                     await asyncio.sleep(3)
                     await ctx.send(random.choice(opt))
 
+    @commands.Cog.listener()
+    async def on_message(self, message):
+        #7sync
+        if message.author.id == 700463905193066588 and "event woo hoo!" in msg.content.lower():
+            try:
+                value = await bot.wait_for('message', timeout=3, check=lambda message: message.author.id == 700463905193066588 and message.channel == msg.channel)
+                value = value.content.split('`')[1]
+                value = value.replace(u'\U0000200b', '')
+                async with msg.channel.typing():
+                    await asyncio.sleep(random.randint(3, 4))
+                    await message.channel.send(value)
+            except asyncio.TimeoutError:
+                ...
 
 def setup(bot):
     bot.add_cog(dank(bot))
