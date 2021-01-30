@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Information{% endblock %}
+{% block head %}
+    <style> 
+        .download-btn {
+            color: black;
+            background-color: #00FA9A;
+            padding: 5px 5px;
+            font-size: 15px;
+
+            margin-top: 40vh;
+            border: 1px transparent;
+        }
+
+        .home {
+            width: 100%;
+            height: 10vh;
+            background: url({{ url_for('static', filename='/Thank You/{% background %}.png') }});
+            background-position: center top;
+            background-size:cover;
+        }
+
+        .navTrigger {
+            display: none;
+        }
+
+        .nav {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            -webkit-transition: all 0.4s ease;
+            transition: all 0.4s ease;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+
+    <?php
+        $bg = array('bg-01.jpg', 'bg-02.jpg', 'bg-03.jpg', 'bg-04.jpg', 'bg-05.jpg', 'bg-06.jpg', 'bg-07.jpg' ); // array of filenames
+
+        $i = rand(0, count($bg)-1); // generate random number size of the array
+        $selectedBg = "$bg[$i]"; // set variable equal to which random filename was chosen
+    ?>    
+
+    <section class="home">
+    
+    </section>
+
+{% endblock %}

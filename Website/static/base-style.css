@@ -1,3 +1,6 @@
+
+/* Not Mine */
+
 @import url('https://fonts.googleapis.com/css?family=Quicksand:400,500,700');
 html,
 body {
@@ -71,7 +74,7 @@ body {
 }
 
 
-/* Home section 
+/* Home section */
 
 
 .navTrigger {
@@ -84,7 +87,7 @@ body {
     -webkit-transition: all 0.4s ease;
     transition: all 0.4s ease;
 }
-*/
+
 
 /* Media qurey section */
 
@@ -347,7 +350,7 @@ body {
 	text-align: justify;
 	padding-left:15%;
 	padding-right:15%;
-	font-size: 20px;
+    font-size: 20px;
 }
 @media all and (max-width:700px){
 	.myP {
@@ -355,4 +358,4 @@ body {
 	}
 }
 
-/* Others */
+

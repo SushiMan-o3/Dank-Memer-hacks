@@ -1,8 +1,5 @@
-/* Navbar color 
-
 .home {
     width: 100%;
-    height: 100vh;
     background-color: black;
     background-position: center top;
     background-size:cover;
@@ -11,19 +8,7 @@
 .navTrigger {
     display: none;
 }
-*/
 
-.home {
-    width: 100%;
-    height: 100vh;
-    background-image: "bang.png";
-    background-position: center top;
-    background-size: cover;
-}
-
-.navTrigger {
-    display: none;
-}
 .nav {
     padding-top: 20px;
     padding-bottom: 20px;

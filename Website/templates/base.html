@@ -9,20 +9,45 @@
 		<!--<meta name="color-scheme" content="light dark"> -->
 		<link href="static/base-style.css" rel="stylesheet" type="text/css" />
 
+		<link rel="icon" href="/static/logo.png">
+
+		<link href="dist/smooth-scrollbar.css" rel="stylesheet">
+		<script src="dist/smooth-scrollbar.js"></script>
+		
 		{% block head %}
 		{% endblock %}
 
-		<link rel="icon" href="/static/logo.png">
+		<style>
+			.discord {
+				position: fixed;
+				margin-left: 91vw;
+				margin-top: 92vh;
+				transition-duration: 0.4s;
+				border: 2px  transparent;
+				padding: 17px 30px;
+				background: #00FA9A;
+				font-size: 20px;
+				color: black;
+			}
+
+				.discord:hover {
+					color: white;
+					border: 6px solid #00FA9A;
+					background: black;
+					padding: 17px 30px;
+				}
+		</style>
 
 	</head>
 
 	<!-- Nav Bar-->
 	<body>
-				
+		<button class="discord" onclick="window.open('https://discord.com/invite/WzfjpcDX')">Discord</button>
+
 		<nav class="nav">
 				<div class="container">
 					<div class="logo">
-						<a href="#">bruh</a>
+						<a href="#">Dank Memer Haxs</a>
 					</div>
 					<div id="mainListDiv" class="main_list">
 						<ul class="navlinks">
