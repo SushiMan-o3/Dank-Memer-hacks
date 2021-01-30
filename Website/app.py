@@ -7,8 +7,8 @@ def home():
     return render_template('index.html') 
 
 @app.route("/information", methods=['GET', 'POST'])
-def about():
-    return render_template('information.html') 
+def shop():
+    return render_template('shop.html') 
 
 @app.route("/help", methods=['GET', 'POST'])
 def help():
@@ -16,7 +16,7 @@ def help():
 
 @app.route("/test", methods=['GET', 'POST'])
 def test():
-    return render_template('test.html') 
+    return render_template('/others/thank-you.html') 
 
 if __name__ == "__main__":
     app.run(debug = True)
