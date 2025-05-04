@@ -1,3 +1,6 @@
 # Dank-Memer-hacks
+An outdated self-bot that was used to farm dank memer (a bot on discord) and spam commands and with various other features. It is outdated and does not work anymore as a result of discord.py and dank memer updating itself. 
 
-An outdated bot that was used to farm dank memer (a bot on discord). I worked on it in 2022 and also created a website to attempt to sell this bot. 
+# Website
+A website was made with the production of this bot. 
+
